@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_telegram_messages
+    description: "Cleaned and standardized telegram messages" 
+    columns:
+      - name: message_id
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_messages
+    description: "Fact table containing one row per message" 
+    columns:
+      - name: message_id
+        tests:
+          - unique
+          - not_null
+      - name: channel_key
+        tests:
+          - relationships:
+              to: ref('dim_channels')
+              field: channel_key
+
+  - name: dim_channels
+    description: "Dimension table for telegram channels" 
+    columns:
+      - name: channel_key
+        tests:
+          - unique
+          - not_null
