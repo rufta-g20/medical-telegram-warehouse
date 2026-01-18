@@ -18,3 +18,8 @@ logs/*.log
 
 # VS Code settings
 .vscode/
+
+medical_warehouse/target/
+medical_warehouse/dbt_packages/
+medical_warehouse/logs/
+medical_warehouse/dbt_modules/
