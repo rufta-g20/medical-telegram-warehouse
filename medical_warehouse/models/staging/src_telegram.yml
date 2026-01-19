@@ -5,4 +5,5 @@ sources:
     database: medical_db
     schema: raw
     tables:
-      - name: telegram_messages
+      - name: telegram_messages  
+      - name: raw_yolo_detections 

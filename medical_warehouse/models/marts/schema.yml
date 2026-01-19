@@ -29,3 +29,13 @@ models:
         tests:
           - unique
           - not_null
+
+  - name: fct_image_detections
+    columns:
+      - name: image_category
+        tests:
+          - accepted_values:
+              values: ['promotional', 'product_display', 'lifestyle', 'other']
+      - name: confidence
+        tests:
+          - not_null
