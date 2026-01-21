@@ -6,3 +6,6 @@ sqlalchemy
 dbt-postgres
 ultralytics
 opencv-python
+fastapi
+uvicorn[standard]
+pydantic
