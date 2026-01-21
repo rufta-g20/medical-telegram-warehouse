@@ -26,3 +26,12 @@ medical_warehouse/dbt_modules/
 
 
 *.pt
+
+
+# Dagster temporary files
+.tmp_dagster_home_*
+*.db
+*.complete
+*.err
+*.out
+storage/

@@ -3,6 +3,7 @@ import json
 import pandas as pd
 from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
+from sqlalchemy import text
 
 load_dotenv()
 
@@ -29,7 +30,13 @@ def load_raw_data():
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS raw;"))
         conn.commit()
     
-    df.to_sql('telegram_messages', engine, schema='raw', if_exists='replace', index=False)
+    
+
+    with engine.begin() as conn:
+        # This empties the data but keeps the table and its dependent views intact
+        conn.execute(text("TRUNCATE TABLE raw.telegram_messages CASCADE;"))
+    
+    df.to_sql('telegram_messages', engine, schema='raw', if_exists='append', index=False)
     print(f"Successfully loaded {len(df)} rows to raw.telegram_messages")
 
 if __name__ == "__main__":
